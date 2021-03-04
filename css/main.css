@@ -1,14 +1,26 @@
-body {
-    background-color: rgb(29, 18, 31);
+html {
+    background-image: url("/res/images/flat_irons.JPG");
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {    
+    background-color: #000000CC;
     margin: 60px auto;
     width: 70%;
 }
+
 nav ul, footer ul {
+    margin: 20px;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
     padding: 0px;
     list-style: none;
     font-weight: bold;
 }
+
 nav ul li, footer ul li {
     display: inline;
     margin-right: 20px;
@@ -22,6 +34,7 @@ a:visited {
     color: rgb(177, 85, 214);
 }
 a:hover {
+    color: rgb(49, 132, 170);
     text-decoration: underline;
 }
 a:active {
@@ -31,12 +44,12 @@ a:active {
 h1 {
     font-size: 2em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    color: #f7d9fa;
+    color: #ffffff;
 }
 h2 {
     font-size: 1em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    color: #f7d9fa;
+    color: #ffffff;
 }
 p {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
@@ -44,6 +57,13 @@ p {
     line-height: 1.4em;
     color: #ffffff;
 }
+
+.std {
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-size: 1.5em;
+    line-height: 1.4em;
+}
+
 footer {
     border-top: 1px solid #ffffff;
     font-size: .8em;
@@ -72,15 +92,44 @@ footer {
 }
 
 .blurb {
-    margin-top: 25px;
-    font-size: 21px;
-    text-align: center;
+    margin: 20px;
+}
 
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
+.project {
+    margin: 20px;
+    /* Set a specific height */
+    min-height: 400px; 
+    
+    /* Create the parallax scrolling effect */
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg {  
+    /* Set background image */
+    background-image: url("/res/images/flat_irons.JPG");
+    /* Set a specific height */
+    min-height: 400px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fade_in {
+    /* margin-top: 25px; */
+    /* font-size: 21px; */
+    /* text-align: center; */
+
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
 }
 
 @keyframes fadein {
