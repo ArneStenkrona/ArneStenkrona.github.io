@@ -1,5 +1,6 @@
 html {
     background-image: url("/res/images/flat_irons.JPG");
+    
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -11,6 +12,10 @@ body {
     background-color: #000000CC;
     margin: 60px auto;
     width: 70%;
+}
+
+nav {
+    border-bottom: 2px solid #ffffff99;
 }
 
 nav ul, footer ul {
