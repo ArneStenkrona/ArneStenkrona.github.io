@@ -8,6 +8,7 @@ date: 2021-03-04
 <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/ttGfDG?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
 
 <p>
@@ -27,7 +28,7 @@ In order to visualize the Mandelbrot set we can draw the two-dimensional complex
 </p>
 
 <p>
-Shader code can be confusing if you've never dealt with it before. In shader toy, we're writing a pixel shader (often called fragment shader). This means that we are writing a function which is going to be executed once for each pixel in the output image. If we associate each pixel with a point in the complex plane, should be able to determine wether or not a pixel is a member of the Mandelbrot set. In order for the programmer to keep track of where we are on the screen, we are supplied with function parameters. Our function signature is as follows:
+Shader code can be confusing if you've never dealt with it before. In shader toy, we're writing a pixel shader (often called fragment shader). This means that we are writing a function which is going to be executed once for each pixel in the output image. If we associate each pixel with a point in the complex plane, we should be able to determine wether or not a pixel is a member of the Mandelbrot set. In order for the programmer to keep track of where we are on the screen, we are supplied with function parameters. Our function signature is as follows:
 </p>
 
 <p>

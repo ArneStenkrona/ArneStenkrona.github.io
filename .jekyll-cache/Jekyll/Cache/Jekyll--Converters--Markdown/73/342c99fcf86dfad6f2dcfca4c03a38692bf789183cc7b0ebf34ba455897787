@@ -1,4 +1,4 @@
-I"$2<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+I"S2<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css" />
 
@@ -23,7 +23,7 @@ In order to visualize the Mandelbrot set we can draw the two-dimensional complex
 </p>
 
 <p>
-Shader code can be confusing if you've never dealt with it before. In shader toy, we're writing a pixel shader (often called fragment shader). This means that we are writing a function which is going to be executed once for each pixel in the output image. If we associate each pixel with a point in the complex plane, should be able to determine wether or not a pixel is a member of the Mandelbrot set. In order for the programmer to keep track of where we are on the screen, we are supplied with function parameters. Our function signature is as follows:
+Shader code can be confusing if you've never dealt with it before. In shader toy, we're writing a pixel shader (often called fragment shader). This means that we are writing a function which is going to be executed once for each pixel in the output image. If we associate each pixel with a point in the complex plane, we should be able to determine wether or not a pixel is a member of the Mandelbrot set. In order for the programmer to keep track of where we are on the screen, we are supplied with function parameters. Our function signature is as follows:
 </p>
 
 <p>
@@ -203,7 +203,7 @@ Much better, isn't it! You might notice the banding between some colors. There a
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         for (i = 0; i &lt; 200; ++i) {
@@ -230,7 +230,7 @@ I therefore opt for a sinusoidal, zooming in and zooming out in order to keep th
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         float depth = 16.0;
         float scale = 1.5 / pow(2.0, depth * abs(sin(iTime / depth)));
