@@ -1,5 +1,5 @@
 html {
-    background-image: url("/res/images/flat_irons.JPG");
+    background-image: url("/res/images/bg/flat_irons.JPG");
     
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
