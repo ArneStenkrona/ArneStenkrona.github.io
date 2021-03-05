@@ -234,7 +234,7 @@ Finally, let's add some zooming in to actually see the true infinite structure o
 </div>
 
 <p>
-I therefore opt for a sinusoidal pattern, alternating between zooming in and zooming out in order to keep the artifacts hidden. We use the shader input <i>iTime</i> in order to control our zoom level.
+I therefore opt for a sinusoidal pattern, alternating between zooming in and zooming out in order to keep the artifacts hidden. We use the shader input <i>iTime</i>, a clock representing the time since application start in seconds, in order to control our zoom level.
 </p>
 
 <p>
