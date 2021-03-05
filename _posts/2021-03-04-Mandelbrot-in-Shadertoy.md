@@ -230,6 +230,9 @@ Much better, isn't it! You might notice the banding between some colors. There a
 Finally, let's add some zooming in to actually see the true infinite structure of the Mandelbrot set. We should also add an offset to ensure that we are zooming in on a visually interesting region. If we zoom in to far we will reach the limits of 32-bit floating point precision, preventing us from diving further in:
 </p>
 
+<div class ="project fade_in" style="background-image: url(&quot;/res/images/mandelbrot/artifact.PNG&quot;);">
+</div>
+
 <p>
 I therefore opt for a sinusoidal, zooming in and zooming out in order to keep the artifacts hidden. We use the shader input <i>iTime</i> in order to control our zoom level.
 </p>
