@@ -150,7 +150,7 @@ These colors were chosen arbitrarily. Feel free to substitue for anything you th
 </p>
 
 <p>
-Now, we need to choose an index into our palette based on the number of iterations. Note, we only use the palette if we diverged. The following logarithmic scheme keeps th e of the colors similar, regardless of how much we zoom into the fractal:
+Now, we need to choose an index into our palette based on the number of iterations. Note, we only use the palette if we diverged. The following logarithmic scheme keeps the of the colors similar, regardless of how much we zoom into the fractal:
 </p>
 
 <p>
