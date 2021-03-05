@@ -204,7 +204,7 @@ Here I must give credit to <a href="https://stackoverflow.com/a/25816111"><i>thi
 </div>
 
 <p>
-Much better, isn't it! You might notice the banding between some colors. There are ways to avoid that too. One is to simply increase the bounds of ´|z| > 2´ to something like '|z| > 2'. This ensures that we get a lot less sudden jumps in the palette as neighbouring pixels will vary their iteration counts more smoothly.
+Much better, isn't it! You might notice the banding between some colors. There are ways to avoid that too. One is to simply increase the bounds of ´|z| > 2´ to something like '|z| > 2000'. This ensures that we get a lot less sudden jumps in the palette as neighbouring pixels will vary their iteration counts more smoothly.
 </p>
 
 <p>
