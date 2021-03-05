@@ -120,7 +120,7 @@ Now we simply color the pixel based on wether or not it diverged:
 </div>
 
 <p>
-While the Mandelbrot is always visually interesting, this binary color scheme can feel a bit underwhelming. In order to make it even more appealing we can use the rate of divergence to choose the color from a palette, Calculatting the rate of divergence is difficult, but the number of iterations before divergence can be used as a rough estimate instead.
+While the Mandelbrot is always visually interesting, this binary color scheme can feel a bit underwhelming. In order to make it even more appealing we can use the rate of divergence to choose the color from a palette, Calculating the rate of divergence is difficult, but the number of iterations before divergence can be used as a rough estimate instead.
 </p>
 
 <p>
