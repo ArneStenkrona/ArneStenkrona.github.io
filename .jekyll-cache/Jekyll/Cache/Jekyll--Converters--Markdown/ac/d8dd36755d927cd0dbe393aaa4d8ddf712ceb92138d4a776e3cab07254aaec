@@ -1,8 +1,10 @@
-I"$#<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+I"�1<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css" />
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/ttGfDG?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe>
 
 <p>
 I find my self often returning to the <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot set</a>. It is perhaps the most famous example of a fractal with possible exception of the <a href="https://en.wikipedia.org/wiki/Sierpiński_triangle">Sierpinski triangle</a> and <a href="https://en.wikipedia.org/wiki/Koch_snowflake">Koch Snowflake</a>.
@@ -25,7 +27,7 @@ Shader code can be confusing if you've never dealt with it before. In shader toy
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
     }
@@ -46,7 +48,7 @@ A reasonably range for the Mandelbrot is `[-2,2]` on the real x-axis. For the im
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         float aspectRatio = IResolution.x / iResolution.y;
         float x = 2.0 * (2.0 * (fragCoord.x / iResolution.x) - 1.0);
@@ -64,7 +66,7 @@ Expressed in GLSL this scheme looks like this:
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         bool diverged = false;
@@ -90,7 +92,7 @@ Now we simply color the pixel based on wether or not it diverged:
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         vec3 col;
@@ -109,6 +111,9 @@ Now we simply color the pixel based on wether or not it diverged:
 
 <p>This gives us a clean, black and white image of the Mandelbrot set:</p>
 
+<div class="project fade_in" style="background-image: url(&quot;/res/images/mandelbrot/bw.PNG&quot;);">
+</div>
+
 <p>
 While the Mandelbrot is always visually interesting, this binary color scheme can feel a bit underwhelming. In order to make it even more appealing we can use the rate of divergence to choose the color from a palette, Calculatting the rate of divergence is difficult, but the number of iterations before divergence can be used as a rough estimate instead.
 </p>
@@ -118,7 +123,7 @@ We start by declaring our palette as an array of <i>vec3</i>, where each array m
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     const vec3 palette[8] = vec3[8](vec3(0.0, 0.0, 0.0)),
                                     vec3(0.5, 0.5, 0.5)),
                                     vec3(1.0, 0.5, 0.5)),
@@ -163,7 +168,7 @@ Now, we need to choose an index into our palette based on the number of iteratio
 </p>
 
 <p>
-Here I must give credit to ... where I found this method. You may notice that <i>fColorIndex</i> is a floating point number. In order to actually index into our palette we will choose the two closest integers and use the fractional part of <i>fColorIndex</i> as a parameter to inteprolate between two colors:
+Here I must give credit to <a href="https://stackoverflow.com/a/25816111"><i>this stackoverflow comment</i></a> where I found this method. You may notice that <i>fColorIndex</i> is a floating point number. In order to actually index into our palette we will choose the two closest integers and use the fractional part of <i>fColorIndex</i> as a parameter to inteprolate between two colors:
 </p>
 
 <p>
@@ -189,4 +194,67 @@ Here I must give credit to ... where I found this method. You may notice that <i
     </code>
     </pre>
 </p>
+
+<div class="project fade_in" style="background-image: url(&quot;/res/images/mandelbrot/color.PNG&quot;);">
+</div>
+
+<p>
+Much better, isn't it! You might notice the banding between some colors. There are ways to avoid that too. One is to simply increase the bounds of ´|z| &gt; 2´ to something like '|z| &gt; 2'. This ensures that we get a lot less sudden jumps in the palette as neighbouring pixels will vary their iteration counts more smoothly.
+</p>
+
+<p>
+    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+        ...
+        for (i = 0; i &lt; 200; ++i) {
+                if (x*x + y*y &gt; 2000.0*2000.0) {
+                    diverged = true;
+                    break;
+                }
+            ...
+        }
+    }
+    </code>
+    </pre>
+</p>
+
+<div class="project fade_in" style="background-image: url(&quot;/res/images/mandelbrot/smooth.PNG&quot;);">
+</div>
+
+<p>
+Finally, let's add some zooming in to actually see the true infinite structure of the Mandelbrot set. We should also add an offset to ensure that we are zooming in on a visually interesting region. If we zoom in to far we will reach the limits of 32-bit floating point precision, preventing us from diving further in:
+</p>
+
+<p>
+I therefore opt for a sinusoidal, zooming in and zooming out in order to keep the artifacts hidden. We use the shader input <i>iTime</i> in order to control our zoom level.
+</p>
+
+<p>
+    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+        float depth = 16.0;
+        float scale = 1.5 / pow(2.0, depth * abs(sin(iTime / depth)));
+        vec2 offset = vec2(-1.5, 0.0);
+
+        float aspectRatio = IResolution.x / iResolution.y;
+        float x = scale * 2.0 * (2.0 * (fragCoord.x / iResolution.x) - 1.0) + offset.x;
+        float y = scale * 2.0 * (1.0 / aspectRatio) * (2.0 * (fragCoord.y / iResolution.y) - 1.0) + offset.y;
+        ...
+    }
+    </code>
+    </pre>
+</p>
+
+<p>
+We use <i>pow(2.0, ...)</i> in order to keep the rate of zooming feeling constant regardless of how deep into the fractal we are.
+</p>
+
+<div class="project fade_in" style="background-image: url(&quot;/res/images/mandelbrot/zoomed.PNG&quot;);">
+</div>
+
+<p>
+And there you have it! The Mandelbrot set visualised using shader toy. You may ask why we've spent time on this implementation when you can simply search for the Mandelbrot set on youtube and find thousands of videos going much further than our 32-bit floating point version can handle? For me, the Mandelbrot set represent the truly infninite complexity of mathematics. It's structure is always there, regardless of wether or not anyone had discovered the mathematics needed to bring it into light. When implementing such a thing for yourself and seeing the infinite structure come to life one is forced to recognize just how grand and wild mathematics is. With just around 50 lines of code we've built a telescope into a world so vast that we can never hope to fully grasp it. Doing it with your own hands gives you something that a youtube video just can't.
+</p>
+
+<p><a href="https://www.shadertoy.com/view/ttGfDG">Link to full implementation at shader toy</a></p>
 :ET

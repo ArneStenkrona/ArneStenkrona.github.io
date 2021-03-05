@@ -31,7 +31,7 @@ Shader code can be confusing if you've never dealt with it before. In shader toy
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
     }
@@ -52,7 +52,7 @@ A reasonably range for the Mandelbrot is `[-2,2]` on the real x-axis. For the im
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         float aspectRatio = IResolution.x / iResolution.y;
         float x = 2.0 * (2.0 * (fragCoord.x / iResolution.x) - 1.0);
@@ -70,7 +70,7 @@ Expressed in GLSL this scheme looks like this:
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         bool diverged = false;
@@ -96,7 +96,7 @@ Now we simply color the pixel based on wether or not it diverged:
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         vec3 col;
@@ -127,7 +127,7 @@ We start by declaring our palette as an array of <i>vec3</i>, where each array m
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     const vec3 palette[8] = vec3[8](vec3(0.0, 0.0, 0.0)),
                                     vec3(0.5, 0.5, 0.5)),
                                     vec3(1.0, 0.5, 0.5)),
@@ -153,7 +153,7 @@ Now, we need to choose an index into our palette based on the number of iteratio
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
         void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         vec3 col;
@@ -176,7 +176,7 @@ Here I must give credit to <a href="https://stackoverflow.com/a/25816111"><i>thi
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
         void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         vec3 col;
@@ -207,7 +207,7 @@ Much better, isn't it! You might notice the banding between some colors. There a
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         for (i = 0; i < 200; ++i) {
@@ -234,7 +234,7 @@ I therefore opt for a sinusoidal, zooming in and zooming out in order to keep th
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         float depth = 16.0;
         float scale = 1.5 / pow(2.0, depth * abs(sin(iTime / depth)));

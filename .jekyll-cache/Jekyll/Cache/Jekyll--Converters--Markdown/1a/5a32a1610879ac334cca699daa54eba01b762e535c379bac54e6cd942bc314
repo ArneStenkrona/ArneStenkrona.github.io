@@ -1,4 +1,4 @@
-I"1<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+I"¶1<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css" />
 
@@ -27,7 +27,7 @@ Shader code can be confusing if you've never dealt with it before. In shader toy
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
     }
@@ -48,7 +48,7 @@ A reasonably range for the Mandelbrot is `[-2,2]` on the real x-axis. For the im
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px;"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         float aspectRatio = IResolution.x / iResolution.y;
         float x = 2.0 * (2.0 * (fragCoord.x / iResolution.x) - 1.0);
@@ -248,6 +248,9 @@ I therefore opt for a sinusoidal, zooming in and zooming out in order to keep th
 <p>
 We use <i>pow(2.0, ...)</i> in order to keep the rate of zooming feeling constant regardless of how deep into the fractal we are.
 </p>
+
+<div class="project fade_in" style="background-image: url(&quot;/res/images/mandelbrot/zoomed.PNG&quot;);">
+</div>
 
 <p>
 And there you have it! The Mandelbrot set visualised using shader toy. You may ask why we've spent time on this implementation when you can simply search for the Mandelbrot set on youtube and find thousands of videos going much further than our 32-bit floating point version can handle? For me, the Mandelbrot set represent the truly infninite complexity of mathematics. It's structure is always there, regardless of wether or not anyone had discovered the mathematics needed to bring it into light. When implementing such a thing for yourself and seeing the infinite structure come to life one is forced to recognize just how grand and wild mathematics is. With just around 50 lines of code we've built a telescope into a world so vast that we can never hope to fully grasp it. Doing it with your own hands gives you something that a youtube video just can't.
