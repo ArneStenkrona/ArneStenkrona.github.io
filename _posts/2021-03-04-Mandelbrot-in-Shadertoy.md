@@ -32,7 +32,7 @@ Shader code can be confusing if you've never dealt with it before. In shader toy
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
     }
@@ -41,7 +41,7 @@ Shader code can be confusing if you've never dealt with it before. In shader toy
 </p>
 
 <p>
- <i>fragColor</i> is our output color in RGBA format. <i>fragCoord</i> is the pixel coordinate of the pixel which is currently passed to the function. The range of the pixel coordinates will depend on resolution. Therefore we would like to convert them to a more screen independent unit. 
+ <i>fragColor</i> is our output color in RGBA format. <i>fragCoord</i> is the pixel coordinate of the pixel which is currently passed to the function. The range of the pixel coordinates will depend on resolution. Therefore we would like to convert them to a more screen independent unit.
  </p>
 
  <p>
@@ -53,7 +53,7 @@ A reasonably range for the Mandelbrot is `[-2,2]` on the real x-axis. For the im
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         float aspectRatio = IResolution.x / iResolution.y;
         float x = 2.0 * (2.0 * (fragCoord.x / iResolution.x) - 1.0);
@@ -71,7 +71,7 @@ Expressed in GLSL this scheme looks like this:
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         bool diverged = false;
@@ -97,7 +97,7 @@ Now we simply color the pixel based on wether or not it diverged:
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         vec3 col;
@@ -128,7 +128,7 @@ We start by declaring our palette as an array of <i>vec3</i>, where each array m
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
     const vec3 palette[8] = vec3[8](vec3(0.0, 0.0, 0.0)),
                                     vec3(0.5, 0.5, 0.5)),
                                     vec3(1.0, 0.5, 0.5)),
@@ -154,7 +154,7 @@ Now, we need to choose an index into our palette based on the number of iteratio
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
         void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         vec3 col;
@@ -177,7 +177,7 @@ Here I must give credit to <a href="https://stackoverflow.com/a/25816111"><i>thi
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
         void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         vec3 col;
@@ -185,7 +185,7 @@ Here I must give credit to <a href="https://stackoverflow.com/a/25816111"><i>thi
             int nPalette = 8;
             float smoothed = log2(log2(x*x + y*y) / 2.0);
             float fColorIndex = (sqrt(float(i) + 10.0 - smoothed));
-            
+
             float colorLerp = fract(fColorIndex);
             int colorIndexA = int(fColorIndex) % nPalette;
             int colorIndexB = (colorIndexA + 1) % nPalette;
@@ -208,7 +208,7 @@ Much better, isn't it! You might notice the banding between some colors. There a
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         ...
         for (i = 0; i < 200; ++i) {
@@ -238,7 +238,7 @@ I therefore opt for a sinusoidal pattern, alternating between zooming in and zoo
 </p>
 
 <p>
-    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl"> 
+    <pre style="background-color: #ffffffcc; border-radius: 5px; word-wrap: break-word"><code class="language-glsl">
     void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         float depth = 16.0;
         float scale = 1.5 / pow(2.0, depth * abs(sin(iTime / depth)));
@@ -261,7 +261,7 @@ We use <i>pow(2.0, ...)</i> in order to keep the rate of zooming feeling constan
 </div>
 
 <p>
-And there you have it! The Mandelbrot set visualised using shader toy. You may ask why we've spent time on this implementation when you can simply search for the Mandelbrot set on youtube and find thousands of videos going much further than our 32-bit floating point version can handle? For me, the Mandelbrot set represent the truly infninite complexity of mathematics. Its structure was always there, regardless of wether or not anyone had discovered the mathematics needed to bring it into light. When implementing such a thing for yourself and seeing the infinite structure come to life one is forced to recognize just how grand and wild mathematics is. With just around 50 lines of code we've built a telescope into a world so vast that we can never hope to fully grasp it. Doing it with your own hands gives you a sense of discovery that a youtube video just can't.
+And there you have it! The Mandelbrot set visualised using shader toy. You may ask why we've spent time on this implementation when you can simply search for the Mandelbrot set on youtube and find thousands of videos going much further than our 32-bit floating point version can handle? For me, the Mandelbrot set represent the truly infinite complexity of mathematics. Its structure was always there, regardless of wether or not anyone had discovered the mathematics needed to bring it into light. When implementing such a thing for yourself and seeing the infinite structure come to life one is forced to recognize just how grand and wild mathematics is. With just around 50 lines of code we've built a telescope into a world so vast that we can never hope to fully grasp it. Doing it with your own hands gives you a sense of discovery that a youtube video just can't.
 </p>
 
 <p><a href="https://www.shadertoy.com/view/ttGfDG">Link to full implementation at shader toy</a></p>

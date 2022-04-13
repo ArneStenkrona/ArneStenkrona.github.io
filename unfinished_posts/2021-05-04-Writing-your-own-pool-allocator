@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Writing Your own pool allocator"
+date: 2021-05-04
+---
+
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+<p>
+A couple of years ago I decided that I would implement my own C++ containers in order to avoid the high allocation costs that you get from the std template library. The logic being that if I maintain my own chunk of memory during the entire lifecycle of the program, I can partition it out to my custom containers quickly. This being in contrast to the std template library, where containers need to kindly ask the operating system for more memory, incurring the cost of a context switch. 
+</p>
+
+<p>
+Before I could worry about writing my own vectors and hash maps I had to create a suitable memory allocator that can supply my containers with memory whenever they need it. I decided that a pool allocator would do the job.
+</p>
+
+<p>
+A pool allocator partitions a contiguous memory region into equally sized blocks. When memory is requested the pool allocator finds just enough contiguous blocks in order to satisfy the request. For example, if a pool allocator has a block size of 256 bytes and a request for 2000 bytes is made, the allocator will find 8 blocks in succession as that is the minimum number of 256 byte sized blocks that can satisfy the 200 byte requirement.
+</p>
+
+<p>
+In order to find these free blocks we store a linked list of all available blocks. In order to not waste memory, the linked list is stored directly in the free memory blocks. Let me explain more clearly:
+</p>
+
+<p>
+First, assume that all blocks are currently free. The pool allocator stores a pointer  <i>free_head</i> to the first free block. This would be the first memory block in the pool allocator's memory. If we dereference this pointer we can interpret the value as another pointer, this time pointing to another free block. Because no block has been allocated away, this would be the second memory block in the pool allocator's memory. This pointer chain is continued until all blocks are covered.
+</p>
