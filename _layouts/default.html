@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 	<html>
 		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<title>{{ page.title }}</title>
 			<!-- link to main stylesheet -->
 			<link rel="stylesheet" type="text/css" href="/css/main.css">
 		</head>
 		<body>
 			<div style="height:1px; width:100%; clear:both;"></div>
-			<nav>
+			<nav class="topnav">
 				<ul>
-						<li><a href="/">home</a></li>
-						<li><a href="/about">about me</a></li>
-						<li><a href="/blog">posts</a></li>
+					<li><a href="/">home</a></li>
+					<li><a href="/about">about me</a></li>
+					<li><a href="/blog">posts</a></li>
 
-						<li style="border-right: 1px solid #ffffffcc"></li>
-
-						<li><a href="https://github.com/ArneStenkrona">github</a></li>
-						<li><a href="https://www.linkedin.com/in/arne-stenkrona-03582617b/">LinkedIn</a></li>
-
-					
+					<!-- <li class=resdivider style="border-right: 1px solid #ffffffcc"></li> -->
+					<!-- <li class=resdivider style="float:left;width: 100%; border-top: 1px solid #ffffffcc; padding-top: 5%;"></li> -->
+				</ul>
+				<ul>
+					<li><a href="https://github.com/ArneStenkrona">github</a></li>
+					<li><a href="https://www.linkedin.com/in/arne-stenkrona-03582617b/">LinkedIn</a></li>
 				</ul>
 			</nav>
 			<div class="container">
-			
+
 			{{ content }}
-			
+
 			</div><!-- /.container -->
 			<footer>
 				© Arne Stenkrona

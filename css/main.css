@@ -1,6 +1,6 @@
 html {
-    background-image: url("/res/images/bg/flat_irons.JPG");
-    
+    /* background-image: url("/res/images/bg/flat_irons.JPG"); */
+
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -8,25 +8,28 @@ html {
     background-size: cover;
 }
 
-body {    
-    background-color: #000000CC;
+body {
+    background-color: #000000EE;
     margin: 60px auto;
     width: 70%;
+    box-shadow: -5px 0px 5px -5px #000000EE, 5px 0px 5px -5px #000000EE;
 }
 
 nav {
-    border-bottom: 2px solid #ffffff99;
+    border-bottom: 2px solid #808fa9;
 }
 
-nav ul, footer ul {
-    margin: 20px;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+nav ul,
+footer ul {
+    margin: 10px;
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     padding: 0px;
     list-style: none;
     font-weight: bold;
 }
 
-nav ul li, footer ul li {
+nav ul li,
+footer ul li {
     display: inline;
     margin-right: 20px;
 }
@@ -35,47 +38,52 @@ a {
     text-decoration: none;
     color: rgb(51, 164, 216);
 }
+
 a:visited {
     color: rgb(177, 85, 214);
 }
+
 a:hover {
     color: rgb(49, 132, 170);
     text-decoration: underline;
 }
+
 a:active {
     color: rgb(84, 84, 194);
 }
 
 h1 {
     font-size: 2em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     color: #ffffff;
 }
+
 h2 {
     font-size: 1em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     color: #ffffff;
 }
+
 p {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     font-size: 1.5em;
     line-height: 1.4em;
     color: #ffffff;
 }
 
 .std {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     font-size: 1.5em;
     line-height: 1.4em;
 }
 
 footer {
-    border-top: 1px solid #ffffff;
+    border-top: 1px solid #808fa9;
     font-size: .8em;
 }
 
-ul.posts { 
-    margin: 20px auto 40px; 
+ul.posts {
+    margin: 20px auto 40px;
     font-size: 1.5em;
     color: #ffffff;
 }
@@ -85,14 +93,14 @@ ul.posts li {
 }
 
 footer {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    margin: 20px auto 40px; 
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
+    margin: 20px auto 40px;
     font-size: 0.75em;
     color: #ffffff;
 }
 
 .posts {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     color: #ffffff;
 }
 
@@ -103,8 +111,10 @@ footer {
 .project {
     margin: 20px;
     /* Set a specific height */
-    min-height: 400px; 
-    
+    min-height: 400px;
+
+    border-radius: 10px;
+
     /* Create the parallax scrolling effect */
     /* background-attachment: fixed; */
     background-position: center;
@@ -112,12 +122,22 @@ footer {
     background-size: cover;
 }
 
-.bg {  
+
+.project div {
+    border-top-right-radius: 9px;
+    border-top-left-radius: 9px;
+}
+
+.project div a {
+    margin: 10px;
+}
+
+.bg {
     /* Set background image */
     background-image: url("/res/images/flat_irons.JPG");
     /* Set a specific height */
-    min-height: 400px; 
-  
+    min-height: 400px;
+
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -130,38 +150,128 @@ footer {
     /* font-size: 21px; */
     /* text-align: center; */
 
-    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 1s; /* Firefox < 16 */
-        -ms-animation: fadein 1s; /* Internet Explorer */
-         -o-animation: fadein 1s; /* Opera < 12.1 */
-            animation: fadein 1s;
+    -webkit-animation: fadein 1s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 1s;
+    /* Internet Explorer */
+    -o-animation: fadein 1s;
+    /* Opera < 12.1 */
+    animation: fadein 1s;
+}
+
+.topnav {
+    background-color: #181b20;
+}
+
+.topnav ul {
+    display: inline-block;
+}
+
+.topnav ul:not(:first-child) {
+    border-left: 1px solid #808fa9;
+    padding-left: 50px;
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+    .topnav {
+        position: relative;
+    }
+
+    .topnav a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .topnav ul {
+        float: none;
+        display: block;
+    }
+
+    .topnav ul:not(:first-child) {
+        border-left: none;
+        border-top: 1px solid #808fa9;
+        padding-top: 20px;
+        padding-left: 0px;
+        width: 25%;
+    }
+
+    p {
+        font-size: 1.1em;
+        line-height: 1.0em;
+    }
+
+    body {
+        margin: 20px auto;
+        width: 100%;
+    }
+
+    .project {
+        min-height: 200px;
+        background-size: cover;
+        background-color: black;
+    }
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
